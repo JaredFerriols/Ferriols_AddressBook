@@ -1,0 +1,48 @@
+Jared
+Ferriols
+1231 Address St.
+Union City
+CA
+94587
+jferriols0@gmail.com
+111-234-5678
+John
+Smith
+1232 Address St.
+Union City
+CA
+94587
+best1@gmail.com
+111-234-5679
+Daniel
+Ecker
+1233 Address St.
+Union City
+CA
+94587
+best2@gmail.com
+111-234-5680
+Mary
+Swanson
+1234 Address St.
+Union City
+CA
+94587
+best3@gmail.com
+111-234-5681
+William
+Afton
+1235 Address St.
+Union City
+CA
+94587
+best4@gmail.com
+111-234-5682
+Jeremy
+Ferriols
+1236 Address St.
+Union City
+CA
+94587
+jferriols1@gmail.com
+111-234-5683
