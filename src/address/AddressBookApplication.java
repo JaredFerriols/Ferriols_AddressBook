@@ -8,11 +8,6 @@ import java.lang.*;
 import java.util.*;
 
 /**
- * main AddressBookApplication: The purpose is to invoke some
- * methods of the Menu class
- */
-
-/**
  * The AddressBookApplication class represents a generic Address Book Application used to invoke methods
  * of the other classes to the user.
  * @author Jared Ferriols
@@ -20,6 +15,13 @@ import java.util.*;
  * @version 1.0
  */
 public class AddressBookApplication {
+
+    /**
+     * The main method which creates an AddressBook and
+     * prompts the user to manipulate the AddressBook class by
+     * allowing adding, deleting, listing, and searching for entries.
+     * @param args is the command line arguments passed to main
+     */
     public static void main(String[] args) {
 
         // Make addressBook object
@@ -54,12 +56,12 @@ public class AddressBookApplication {
 
 
     /**
-     * This method allows the user to select their desired choices based on the menu's
-     * display.
-     * @param ab ab is an object of the AddressBook class that will hold and manipulate the address entries.
-     * @returns nothing While this method returns nothing, it is supposed to call
-     * the functions of the AddressBook and AddressEntry classes based on the
-     * user's input
+     * This method allows the user to select their desired choices to manipulate
+     * the AddressBook instance based on the menu's display.
+     * @param ab is an object of the AddressBook class that will hold,
+     * manipulate, and display the address entries.
+     * @returns nothing as it is supposed to call the functions of the AddressBook
+     * and AddressEntry classes based on the user's input
      */
     public static void startApplication(AddressBook ab){
         Scanner keyboard = new Scanner(System.in);

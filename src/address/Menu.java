@@ -1,13 +1,9 @@
 package address;
-// import java.awt.*;
 import java.util.*;
 
 /**
- * Menu class currently only has static methods to prompt to standard output information about a Contact like name,etc
- */
-
-/**The Menu class represents a generic Menu used to display menu options to the user.
- * This only uses empty or unfinished prompt methods for now
+ * The Menu class represents a generic Menu used to display menu options to the user,
+ * and allows the user to enter in data to AddressEntry through prompts
  * @author Jared Ferriols
  * @since Jan. 25, 2023
  * @version 1.0
@@ -17,8 +13,9 @@ public class Menu {
 
 
     /**
-     * prompt for First Name
-     * @return the First Name entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for a first name entered in by the user
+     * and returns a string
+     * @return a String which represents a person's first name
      */
     public static String prompt_FirstName(){
         Scanner keyboard = new Scanner(System.in);
@@ -27,8 +24,9 @@ public class Menu {
     }
 
     /**
-     * prompt for Last Name
-     * @return the Last Name entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for a last name entered in by the user
+     * and returns a string
+     * @return a String which represents a person's last name
      */
     public static String prompt_LastName(){
         Scanner keyboard = new Scanner(System.in);
@@ -38,37 +36,36 @@ public class Menu {
     }
 
     /**
-     * prompt for Street
-     * @return the Street entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for a street entered in by the user
+     * and returns a string
+     * @return a String which represents a person's street
      */
     public static String prompt_Street(){
 
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Street: ");
-
-
         return keyboard.nextLine();
 
     }
 
     /**
-     * prompt for City
-     * @return the City entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for a city entered in by the user
+     * and returns a string
+     * @return a String which represents a person's city
      */
     public static String prompt_City(){
 
         Scanner keyboard = new Scanner(System.in);
         System.out.println("City: ");
-
-
         return keyboard.nextLine();
 
     }
 
 
     /**
-     * prompt for State
-     * @return the State entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for a state entered in by the user
+     * and returns a string
+     * @return a String which represents a person's state
      */
     public static String prompt_State(){
 
@@ -80,8 +77,9 @@ public class Menu {
 
 
     /**
-     * prompt for Zip
-     * @return the Zip entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for a zip code entered in by the user
+     * and returns an integer
+     * @return an integer which represents a person's zip code
      */
     public static int prompt_Zip(){
 
@@ -95,8 +93,9 @@ public class Menu {
 
 
     /**
-     * prompt for Telephone
-     * @return the Telephone entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for a telephone number entered in by the user
+     * and returns a string
+     * @return a String which represents a person's telephone number
      */
     public static String prompt_Telephone(){
 
@@ -108,8 +107,9 @@ public class Menu {
 
 
     /**
-     * prompt for Email
-     * @return the Email entered in by the user, if nothing entered in will use default
+     * A method which prompts the user for an email address entered in by the user
+     * and returns a string
+     * @return a String which represents a person's email address
      */
     public static String prompt_Email(){
 
@@ -119,6 +119,10 @@ public class Menu {
 
     }
 
+    /**
+     * Prints out a menu which prompts a user a selection of options
+     * to manipulate the AddressBook class
+     */
     public static void displayMenu(){
         System.out.print("""
                 *************************

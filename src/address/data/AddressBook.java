@@ -8,11 +8,8 @@ import java.lang.*;
 import java.io.*;
 
 
-/** AddressBook: purpose is to represent an address book.
- * It is used to access and store multiple AddressEntry objects in one object.
- */
-
-/**The AddressBook class represents a generic Address Book used to store multiple Address entries
+/**
+ * The AddressBook class represents a generic Address Book used to store multiple Address entries
  * for the user to add, remove, or look up.
  * @author Jared Ferriols
  * @since Jan. 25, 2023
@@ -42,7 +39,8 @@ public class AddressBook {
      * each of its AddressEntry objects.
      *
      * @param nothing
-     * @returns nothing, It is a void function, but it prints out a string on the console.
+     * @returns nothing, It is a void function, but it prints all the address entries
+     * in the address book
      */
 
     public void list() {
@@ -56,7 +54,6 @@ public class AddressBook {
         // https://stackoverflow.com/questions/7278128/formatting-string-in-java-using-return-string-format
         // https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
 
-        // StringBuilder object used to make String class object
         StringBuilder contents = new StringBuilder();
         int i = 1;
         // iterate TreeMap
@@ -77,13 +74,16 @@ public class AddressBook {
 
     /**
      * A method which adds an address entry object to the address book
-     *
-     * @param entry entry is an object of AddressEntry to add in the AddressBook
+     * @param entry is an object of AddressEntry to add to the AddressBook
      * @returns nothing
+     *
+     * If the key is new, then a new TreeSet is created to contain the address entry
+     * If the key is not new, then it checks compareTo method to see if the address entry
+     * data is different in other data such as first name
      **/
     // https://www.baeldung.com/java-map-putifabsent-computeifabsent
     // https://stackoverflow.com/questions/65421001/treemapstring-new-treemapstring-integer-treemap-with-object
-    public void add(AddressEntry newEntry0) {
+    public void add(AddressEntry entry) {
 
         // java: incompatible types: boolean cannot be converted to java.util.TreeSet<address.data.AddressEntry>
         // TreeSet<AddressEntry> aETSet = new TreeSet<AddressEntry>();
@@ -103,9 +103,16 @@ public class AddressBook {
 
         // Add in contacts in a TreeMap<String, TreeSet<AddressEntry>> by checking
         // if the contents is already in the set
-        addressEntryList.computeIfAbsent(newEntry0.getLastName(), k -> new TreeSet<>()).add(newEntry0);
+        addressEntryList.computeIfAbsent(entry.getLastName(), k -> new TreeSet<>()).add(entry);
     }
 
+    /**
+     * A method which reads the address entries from a text file and adds them to the address book
+     *
+     * @param fileName is a string which is the name of a text file that contains the address Entry data
+     *
+     * The format for the text file is firstName\nlastName\nstreet\ncity\nstate\nzip\nphone\nemail
+     */
     public void loadEntriesFromFile(String fileName) {
 
         // https://stackoverflow.com/questions/25596985/java-unreported-exception-java-io-filenotfoundexception-must-be-caught-or-decl
@@ -118,7 +125,7 @@ public class AddressBook {
             String fileLine;
 
             // read strings except for zip, which is an int
-            // firstName + lastName + street +  city + state +  zip + email +  phone;
+            // firstName + lastName + street +  city + state +  zip + phone +  email;
             while((fileLine = br.readLine()) != null) {
                 this.add(new AddressEntry(fileLine, br.readLine(), br.readLine(), br.readLine(),
                         br.readLine(), Integer.parseInt(br.readLine()), br.readLine(), br.readLine()));
@@ -132,11 +139,14 @@ public class AddressBook {
         }
     }
 
-    public void remove(String lastName) {
 
-        // get entry sets based on first character of last name
+    // https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html
+    // https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+    public void remove(String lastName) {
         try {
-            // try to remove entry sets based on size, or else there is no entry set
+
+
+
         }
         catch(InputMismatchException e) {
             System.out.println("Error: You need to enter a valid integer. Please try again.");
@@ -147,19 +157,38 @@ public class AddressBook {
 
     }
 
-    public void find(String lastName) {
+    /**
+     * A method which finds the desired address entry based on the user's input
+     * and displays one or multiple address entries
+     * @param partLastName is a string which contains either a full last name or the first part
+     * of a last name in an AddressEntry
+     */
+    public void find(String partLastName) {
 
         // https://www.geeksforgeeks.org/stream-in-java/
+        // https://howtodoinjava.com/java/collections/java-submap/
+        // https://stackoverflow.com/questions/24668887/extracting-a-specific-list-from-a-navigablemap-in-java
+        // java: incompatible types: java.util.SortedMap<java.lang.String,java.util.TreeSet<address.data.AddressEntry>> cannot be converted to java.util.NavigableMap<java.lang.String,java.util.TreeSet<address.data.AddressEntry>>
+        SortedMap<String, TreeSet<address.data.AddressEntry>> usableMap;
+        usableMap = addressEntryList.subMap(partLastName, partLastName + Character.MAX_VALUE);
 
-
-        if(addressEntryList.size() > 0) {
+        if(usableMap.size() > 0) {
             int i = 1;
-            
-            System.out.println("The following " + addressEntryList.values().stream().count() +
+            int j = 0;
+
+            // Get size of SortedMap, as .size() returns 1 instead of actual number of elements
+            for(Map.Entry<String, TreeSet<address.data.AddressEntry>> entry : usableMap.entrySet()) {
+                for(address.data.AddressEntry item : entry.getValue()) {
+                    j++;
+                }
+            }
+
+            // usableMap.values().stream().count()
+            System.out.println("The following " + j +
                     " entries were found in the address book" +
-                    " for a last name starting with " + "\"" + lastName + "\"");
-            for(Map.Entry<String, TreeSet<AddressEntry>> entry : addressEntryList.entrySet()) {
-                for(AddressEntry item : entry.getValue()) {
+                    " for a last name starting with " + "\"" + partLastName + "\"");
+            for(Map.Entry<String, TreeSet<address.data.AddressEntry>> entry : usableMap.entrySet()) {
+                for(address.data.AddressEntry item : entry.getValue()) {
                     System.out.printf("%-3s" + item + "\n\n", i + ":");
                     i++;
                 }
@@ -167,7 +196,7 @@ public class AddressBook {
         }
         else
             System.out.println("There were no entries were found in the address book" +
-                    " for a last name starting with " + "\"" + lastName + "\"");
+                    " for a last name starting with " + "\"" + partLastName + "\"");
 
     }
 }

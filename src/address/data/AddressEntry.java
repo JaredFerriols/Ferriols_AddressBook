@@ -6,13 +6,9 @@ package address.data;
 // https://stackoverflow.com/questions/8699195/cannot-be-cast-to-java-lang-comparable
 // https://stackoverflow.com/questions/3718383/why-should-a-java-class-implement-comparable
 
-/** AddressEntry: This is used to represent all the data that is within an address entry
- * It is a class where the collections of information for an address book is held.
- */
-
 /**
  * The AddressEntry class represents a generic Address Entry used to store all the information or data
- * for one user's address entry.
+ * for a user's address entry.
  * @author Jared Ferriols
  * @since Jan. 25, 2023
  * @version 1.0
@@ -68,7 +64,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /** The AddressEntry constructor
      * This initializes the values with the data provided in the parameters.
      * @param firstName is a firstname
-     * @param lastName is a listname
+     * @param lastName is a lastname
      * @param street is a street
      * @param city is a city
      * @param state is a state
@@ -91,7 +87,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /** Takes data elements and composes a nicely formatted string from its values and returns this string
      * @param nothing
-     * @return string A formatted string of the data
+     * @return a formatted string of the data
      */
     // @Override
     public String toString(){
@@ -105,7 +101,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Used to properly add elements in the TreeMap for the add module in AddressBook
      * as it needs to "return" a boolean value in TreeSet<AddressEntry>add().
-     * @param AddressEntry other An AddressEntry object
+     * @param AddressEntry an AddressEntry object
      * @return a boolean value of 0 and 1, it compares the data of the address entry from last name
      * to zip code.
      */
@@ -128,7 +124,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Method used to set the first name of the address entry
-     * @param firstName
+     * @param firstName is a first name
      * @returns nothing
      */
     public void setFirstName(String firstName) {
@@ -136,7 +132,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     }
     /**
      * Method used to set the last name of the address entry
-     * @param lastName
+     * @param lastName is a last name
      * @returns nothing
      */
     public void setLastName(String lastName) {
@@ -145,7 +141,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Method used to set the street of the address entry
-     * @param street
+     * @param street is a street
      * @returns nothing
      */
     public void setStreet(String street) {
@@ -154,7 +150,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Method used to set the city of the address entry
-     * @param city
+     * @param city is a city
      * @returns nothing
      */
     public void setCity(String city) {
@@ -163,7 +159,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Method used to set the zip code of the address entry
-     * @param zip
+     * @param zip is a zip code
      * @returns nothing
      */
     public void setZip(int zip) {
@@ -172,7 +168,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Method used to set the phone number of the address entry
-     * @param phone
+     * @param phone is a phone number
      * @returns nothing
      */
     public void setPhone(String phone) {
@@ -181,7 +177,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Method used to set the email of the address entry
-     * @param email
+     * @param email is an email address
      * @returns nothing
      */
     public void setEmail(String email) {
@@ -190,7 +186,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Method used to set the state of the address entry
-     * @param state
+     * @param state is a state
      * @returns nothing
      */
     public void setState(String state) {
@@ -200,7 +196,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the first name of the address entry as a string
      * @param nothing
-     * @returns firstName the first name of a person
+     * @returns a String which represents the first name of a person
      */
     public String getFirstName() {
         return firstName;
@@ -208,7 +204,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the first name of the address entry as a string
      * @param nothing
-     * @returns lastName the last name of a person
+     * @returns a String which represents the last name of a person
      */
     public String getLastName() {
         return lastName;
@@ -217,7 +213,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the street of the address entry as a string
      * @param nothing
-     * @returns street the street name where the person lives at
+     * @returns a String which represents the street name where the person lives at
      */
     public String getStreet() {
         return street;
@@ -226,7 +222,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the city of the address entry as a string
      * @param nothing
-     * @returns city the city name or the large town where the person resides in
+     * @returns a String which represents the city name or the large town where the person lives at
      */
     public String getCity() {
         return city;
@@ -235,7 +231,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the state of the address entry as a string
      * @param nothing
-     * @returns state the state name or the small nation where the person resides in
+     * @returns a String which represents the state name or the small nation where the person lives at
      */
     public String getState() {
         return state;
@@ -243,7 +239,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the zip of the address entry as a string
      * @param nothing
-     * @returns zip the zip area code
+     * @returns a String which represents the zip area code of a person
      */
     public int getZip() {
         return zip;
@@ -252,7 +248,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the phone number of the address entry as a string
      * @param nothing
-     * @returns phone the phone number of the person to directly call
+     * @returns a String which represents the phone number of the person to directly call
      */
     public String getPhone() {
         return phone;
@@ -261,7 +257,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Method used to get the email of the address entry as a string
      * @param nothing
-     * @returns email the email of the person to message information electronically
+     * @returns a String which represents the email of the person to message information electronically
      */
     public String getEmail() {
         return email;
