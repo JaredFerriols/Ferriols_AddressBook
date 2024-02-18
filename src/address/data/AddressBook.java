@@ -142,11 +142,67 @@ public class AddressBook {
 
     // https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html
     // https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+    // https://www.geeksforgeeks.org/arraylist-get-method-java-examples/?ref=lbp
+
+    /**
+     * A method which removes an address entry from the address book
+     *
+     * @param lastName is the last name or the part of the last name of the
+     * person contained in the AddressEntry to be removed, as there could be multiple
+     * entires with the same first character of the last name
+     *
+     * First we find and store AddressEntry into a data structure.
+     * If there is only one AddressEntry instance, then print out AddressEntry and
+     * prompt user if they wish to delete. If there is more than 1 element,
+     * then print all elements and ask user to select element based on index.
+     */
     public void remove(String lastName) {
+        // Find all entries based on part of the last name and store them in TreeSet
+        SortedMap<String, TreeSet<address.data.AddressEntry>> usableMap;
+        usableMap = addressEntryList.subMap(lastName, lastName + Character.MAX_VALUE);
+        TreeSet<AddressEntry> selectedSet = new TreeSet<>();
+        for(Map.Entry<String, TreeSet<AddressEntry>> entry : usableMap.entrySet()) {
+            selectedSet.addAll(entry.getValue());
+        }
+        Scanner keyboard = new Scanner(System.in);
+
         try {
+            if (selectedSet.size() == 1) {
+                ArrayList<AddressEntry> onlyList = new ArrayList<>();
+                for (AddressEntry entry : selectedSet) {
+                    onlyList.add(entry);
+                }
+                int oneIndex = 0;
+                System.out.println("The following entry was found in the address book.");
+                System.out.printf("%-3s" + onlyList.get(oneIndex) + "\n", " ");
+                System.out.println("Hit 'y' to remove the entry or 'n' to return to main menu");
+                if (keyboard.nextLine().compareTo("y") == 0) {
+                    addressEntryList.get(onlyList.get(oneIndex).getLastName()).remove(onlyList.get(oneIndex));
+                }
+            } else if (selectedSet.size() > 1) {
+                    ArrayList<AddressEntry> selectedList = new ArrayList<>();
+                    int i = 1;
+                    System.out.println("The following entries were found in the address book," +
+                            "select number of entry you wish to remove:\n");
+                    for (AddressEntry entry : selectedSet) {
+                        selectedList.add(entry);
+                        System.out.printf("%-3s" + entry + "\n\n", i + ":");
+                        i++;
+                    }
+                    // Index is based on array, so choice 1 is actually 0 for ArrayList
+                    int selectedIndex = keyboard.nextInt() - 1;
+                    keyboard.nextLine();
+                    if (selectedIndex < selectedList.size() && selectedIndex >= 0) {
+                        System.out.println("Hit 'y' to remove the following entry or 'n' to return to main menu:\n");
+                    }
+                    System.out.printf("%-3s" + selectedList.get(selectedIndex) + "\n\n", "  ");
+                    if (keyboard.nextLine().compareTo("y") == 0) {
+                        addressEntryList.get(selectedList.get(selectedIndex).getLastName()).remove(selectedList.get(selectedIndex));
+                    }
 
-
-
+            } else {
+                System.out.println("No entries with last name " + lastName + " were found.");
+            }
         }
         catch(InputMismatchException e) {
             System.out.println("Error: You need to enter a valid integer. Please try again.");
