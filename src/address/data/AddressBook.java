@@ -125,7 +125,7 @@ public class AddressBook {
             String fileLine;
 
             // read strings except for zip, which is an int
-            // firstName + lastName + street +  city + state +  zip + phone +  email;
+            // firstName + lastName + street +  city + state + zip + phone +  email;
             while((fileLine = br.readLine()) != null) {
                 this.add(new AddressEntry(fileLine, br.readLine(), br.readLine(), br.readLine(),
                         br.readLine(), Integer.parseInt(br.readLine()), br.readLine(), br.readLine()));
