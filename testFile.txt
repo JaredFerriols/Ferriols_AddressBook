@@ -1,0 +1,24 @@
+John
+Smith
+1234 Address St
+Union City
+CA
+94587
+best1@gmail.com
+111-234-5678
+Adrian
+Lester
+4321 Address St
+Fremont
+CA
+94536
+best2@gmail.com
+999-876-5432
+Mary
+Smith
+5678 Address St
+San Francisco
+CA
+94101
+best3@gmail.com
+510-555-1234

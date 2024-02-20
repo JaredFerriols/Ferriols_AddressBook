@@ -97,8 +97,30 @@ public class MenuTest {
     @Test
     public void testDisplayMenu() {
 
-            Menu.displayMenu();
-            return; // indicates success
+        ByteArrayOutputStream output1 = new ByteArrayOutputStream();
+        PrintStream ps1 = new PrintStream(output1);
+        String expected1 = """
+                *************************
+                Please enter your menu selection
+                a) Loading From File
+                b) Addition
+                c) Removal
+                d) Find
+                e) Listing
+                f) Quit
+                *************************
+                """;
+
+        PrintStream old = System.out;
+        System.setOut(ps1);
+
+        Menu.displayMenu();
+
+        System.out.flush();
+        System.setOut(old);
+
+        assertEquals(expected1, output1.toString());
+
 
     }
 }
