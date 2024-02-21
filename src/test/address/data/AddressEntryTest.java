@@ -1,3 +1,6 @@
+package address.data;
+// package address;
+
 import address.data.AddressBook;
 import address.data.AddressEntry;
 
@@ -6,22 +9,59 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class is used to test the AddressEntry class to make sure it works properly.
+ * @author Jared Ferriols
+ * @since JDK 17
+ * @version 1.2
+ */
+
 class AddressEntryTest {
 
+    /**
+     * A preloaded object of AddressEntry for AddressEntryTest methods
+     */
     private static AddressEntry makeEntryA() {
         return new AddressEntry("John", "Smith", "1234 Address St", "Union City", "CA", 94587, "111-234-5678", "best1@gmail.com");
     }
+    /**
+     * A preloaded object of AddressEntry for AddressEntryTest methods
+     */
     private static AddressEntry makeEntryB() {
         return new AddressEntry("Adrian", "Lester", "4321 Address St", "Fremont", "CA", 94536, "999-876-5432", "best2@gmail.com");
     }
+    /**
+     * A preloaded object of AddressEntry for AddressEntryTest methods
+     */
     private static AddressEntry makeEntryC() {
         return new AddressEntry("Mary", "Smith", "5678 Address St", "San Francisco", "CA", 94101, "510-555-1234", "best3@gmail.com");
     }
+    /**
+     * A preloaded object of AddressEntry for AddressEntryTest methods
+     */
     private static AddressEntry makeEntryD() {
         return new AddressEntry("Francis", "Gill", "1111 Address St", "Hayward", "CA", 94540, "510-555-1235", "best4@gmail.com");
     }
 
 
+    /**
+     * Test method for {@link AddressEntry#AddressEntry()}
+     */
+    @Test
+    public void testAddressEntry() {
+        AddressEntry a1 = makeEntryA();
+        String expected1 = "John, Smith\n\t1234 Address St\n\tUnion City, CA 94587\n\tbest1@gmail.com\n\t111-234-5678";
+        assertEquals(expected1, a1.toString());
+
+        AddressEntry a2 = makeEntryC();
+        String expected2 = "Mary, Smith\n\t5678 Address St\n\tSan Francisco, CA 94101\n\tbest3@gmail.com\n\t510-555-1234";
+        assertEquals(expected2, a2.toString());
+    }
+
+
+    /**
+     * Test method for {@link AddressEntry#toString()}.
+     */
     @Test
     void testToString() {
 
@@ -29,6 +69,9 @@ class AddressEntryTest {
         assertEquals(makeEntryB().toString(), "Adrian, Lester\n\t4321 Address St\n\tFremont, CA 94536\n\tbest2@gmail.com\n\t999-876-5432");
     }
 
+    /**
+     * Test method for {@link AddressEntry#compareTo(AddressEntry)}.
+     */
     @Test
     void testCompareTo() {
         AddressEntry aa = makeEntryA();
@@ -42,7 +85,9 @@ class AddressEntryTest {
         assertTrue(aa.compareTo(cc) > 0);
         assertTrue(ee.compareTo(dd) < 0);
     }
-
+    /**
+     * Test method for {@link AddressEntry#setFirstName(java.lang.String)}
+     */
     @Test
     void testSetFirstName() {
         AddressEntry entryA = makeEntryA();
@@ -57,6 +102,9 @@ class AddressEntryTest {
 
     }
 
+    /**
+     * Test method for {@link AddressEntry#setLastName(java.lang.String)}
+     */
     @Test
     void testSetLastName() {
         AddressEntry entryA = makeEntryA();
@@ -71,6 +119,9 @@ class AddressEntryTest {
 
     }
 
+    /**
+     * Test method for {@link AddressEntry#setStreet(java.lang.String)}
+     */
     @Test
     void testSetStreet() {
         AddressEntry entryA = makeEntryA();
@@ -86,6 +137,9 @@ class AddressEntryTest {
 
     }
 
+    /**
+     * Test method for {@link AddressEntry#setCity(java.lang.String)}
+     */
     @Test
     void testSetCity() {
         AddressEntry entryA = makeEntryA();
@@ -101,6 +155,9 @@ class AddressEntryTest {
 
     }
 
+    /**
+     * Test method for {@link AddressEntry#setZip(int)}
+     */
     @Test
     void testSetZip() {
         AddressEntry entryA = makeEntryA();
@@ -116,6 +173,9 @@ class AddressEntryTest {
 
     }
 
+    /**
+     * Test method for {@link AddressEntry#setPhone(java.lang.String)}
+     */
     @Test
     void testSetPhone() {
         AddressEntry entryA = makeEntryA();
@@ -129,6 +189,9 @@ class AddressEntryTest {
         assertEquals(entryC.getPhone(), "333-333-3333");
     }
 
+    /**
+     * Test method for {@link AddressEntry#setEmail(java.lang.String)}
+     */
     @Test
     void testSetEmail() {
         AddressEntry entryA = makeEntryA();
@@ -142,6 +205,9 @@ class AddressEntryTest {
         assertEquals(entryC.getEmail(), "ultimatebest3@gmail.com");
     }
 
+    /**
+     * Test method for {@link AddressEntry#setState(java.lang.String)}
+     */
     @Test
     void testSetState() {
         AddressEntry entryA = makeEntryA();
@@ -155,6 +221,9 @@ class AddressEntryTest {
         assertEquals(entryC.getState(), "AR");
     }
 
+    /**
+     * Test method for {@link AddressEntry#getFirstName()}
+     */
     @Test
     void testGetFirstName() {
         assertEquals("John", makeEntryA().getFirstName());
@@ -167,6 +236,9 @@ class AddressEntryTest {
         assertNotEquals("Franciss", makeEntryD().getFirstName());
     }
 
+    /**
+     * Test method for {@link AddressEntry#getLastName()}
+     */
     @Test
     void testGetLastName() {
         assertEquals("Smith", makeEntryA().getLastName());
@@ -179,6 +251,9 @@ class AddressEntryTest {
         assertNotEquals("Gilll", makeEntryD().getLastName());
     }
 
+    /**
+     * Test method for {@link AddressEntry#getStreet()}
+     */
     @Test
     void testGetStreet() {
         assertEquals("1234 Address St", makeEntryA().getStreet());
@@ -191,6 +266,9 @@ class AddressEntryTest {
         assertNotEquals("1112 Address St", makeEntryD().getStreet());
     }
 
+    /**
+     * Test method for {@link AddressEntry#getCity()}
+     */
     @Test
     void testGetCity() {
         assertEquals("Union City", makeEntryA().getCity());
@@ -203,6 +281,9 @@ class AddressEntryTest {
         assertNotEquals("Los Angeles", makeEntryD().getCity());
     }
 
+    /**
+     * Test method for {@link AddressEntry#getState()}
+     */
     @Test
     void testGetState() {
         assertEquals(makeEntryA().getState(), "CA");
@@ -215,6 +296,9 @@ class AddressEntryTest {
         assertNotEquals(makeEntryD().getState(), "WA");
     }
 
+    /**
+     * Test method for {@link AddressEntry#getZip()}
+     */
     @Test
     void testGetZip() {
         assertEquals(makeEntryA().getZip(), 94587);
@@ -229,6 +313,9 @@ class AddressEntryTest {
 
     }
 
+    /**
+     * Test method for {@link AddressEntry#getPhone()}
+     */
     @Test
     void testGetPhone() {
 
@@ -243,6 +330,9 @@ class AddressEntryTest {
         assertNotEquals(makeEntryD().getPhone(), "510-555-1236");
     }
 
+    /**
+     * Test method for {@link AddressEntry#getEmail()}
+     */
     @Test
     void testGetEmail() {
         assertEquals(makeEntryA().getEmail(), "best1@gmail.com");
@@ -253,8 +343,5 @@ class AddressEntryTest {
         assertNotEquals(makeEntryB().getEmail(), "best6@gmail.com");
         assertNotEquals(makeEntryC().getEmail(), "best7@gmail.com");
         assertNotEquals(makeEntryD().getEmail(), "best8@gmail.com");
-
-
-
     }
 }

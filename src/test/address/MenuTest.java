@@ -1,3 +1,6 @@
+package address.data;
+// package address;
+
 import address.data.AddressBook;
 import address.data.AddressEntry;
 import address.Menu;
@@ -8,11 +11,21 @@ import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class is used to test the Menu class to make sure it works properly.
+ * @author Jared Ferriols
+ * @since JDK 17
+ * @version 1.2
+ */
+
 public class MenuTest {
 
 
     // https://stackoverflow.com/questions/6415728/junit-testing-with-simulated-user-input
     // https://stackoverflow.com/questions/3894798/hide-java-output
+    /**
+     * Test method for {@link Menu#prompt_FirstName()}
+     */
     @Test
     public void testPrompt_FirstName() {
         InputStream sysInBackup = System.in;
@@ -23,6 +36,9 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
+    /**
+     * Test method for {@link Menu#prompt_LastName()}
+     */
     @Test
     public void testPrompt_LastName() {
         InputStream sysInBackup = System.in;
@@ -33,6 +49,9 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
+    /**
+     * Test method for {@link Menu#prompt_Street()}
+     */
     @Test
     public void testPrompt_Street() {
         InputStream sysInBackup = System.in;
@@ -43,6 +62,9 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
+    /**
+     * Test method for {@link Menu#prompt_City()}
+     */
     @Test
     public void testPrompt_City() {
         InputStream sysInBackup = System.in;
@@ -53,6 +75,9 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
+    /**
+     * Test method for {@link Menu#prompt_State()}
+     */
     @Test
     public void testPrompt_State() {
         InputStream sysInBackup = System.in;
@@ -63,6 +88,9 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
+    /**
+     * Test method for {@link Menu#prompt_Zip()}
+     */
     @Test
     public void testPrompt_Zip() {
         InputStream sysInBackup = System.in;
@@ -73,6 +101,9 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
+    /**
+     * Test method for {@link Menu#prompt_Telephone()}
+     */
     @Test
     public void testPrompt_Telephone() {
         InputStream sysInBackup = System.in;
@@ -83,17 +114,23 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
+    /**
+     * Test method for {@link Menu#prompt_Email()}
+     */
     @Test
     public void testPrompt_Email() {
         InputStream sysInBackup = System.in;
         String email = "best1@gmail.com";
         ByteArrayInputStream input = new ByteArrayInputStream(email.getBytes());
         System.setIn(input);
-        assertEquals(email, Menu.prompt_Telephone());
+        assertEquals(email, Menu.prompt_Email());
         System.setIn(sysInBackup);
     }
 
     // https://stackoverflow.com/questions/246038/unit-testing-void-methods
+    /**
+     * Test method for {@link Menu#displayMenu()}
+     */
     @Test
     public void testDisplayMenu() {
 

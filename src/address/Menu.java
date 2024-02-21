@@ -5,8 +5,8 @@ import java.util.*;
  * The Menu class represents a generic Menu used to display menu options to the user,
  * and allows the user to enter in data to AddressEntry through prompts
  * @author Jared Ferriols
- * @since Jan. 25, 2023
- * @version 1.0
+ * @since JDK 17
+ * @version 1.2
  */
 
 public class Menu {

@@ -1,0 +1,249 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Menu</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">address</a>
+</div>
+
+<h1>Coverage Summary for Class: Menu (address)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Menu</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (9/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96.2%
+  </span>
+  <span class="absValue">
+    (25/26)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package address;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;/**
+&nbsp; * The Menu class represents a generic Menu used to display menu options to the user,
+&nbsp; * and allows the user to enter in data to AddressEntry through prompts
+&nbsp; * @author Jared Ferriols
+&nbsp; * @since JDK 17
+&nbsp; * @version 1.2
+&nbsp; */
+&nbsp;
+<b class="nc">&nbsp;public class Menu {</b>
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for a first name entered in by the user
+&nbsp;     * and returns a string
+&nbsp;     * @return a String which represents a person&#39;s first name
+&nbsp;     */
+&nbsp;    public static String prompt_FirstName(){
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;First Name: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextLine();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for a last name entered in by the user
+&nbsp;     * and returns a string
+&nbsp;     * @return a String which represents a person&#39;s last name
+&nbsp;     */
+&nbsp;    public static String prompt_LastName(){
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Last Name: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextLine();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for a street entered in by the user
+&nbsp;     * and returns a string
+&nbsp;     * @return a String which represents a person&#39;s street
+&nbsp;     */
+&nbsp;    public static String prompt_Street(){
+&nbsp;
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Street: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextLine();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for a city entered in by the user
+&nbsp;     * and returns a string
+&nbsp;     * @return a String which represents a person&#39;s city
+&nbsp;     */
+&nbsp;    public static String prompt_City(){
+&nbsp;
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;City: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextLine();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for a state entered in by the user
+&nbsp;     * and returns a string
+&nbsp;     * @return a String which represents a person&#39;s state
+&nbsp;     */
+&nbsp;    public static String prompt_State(){
+&nbsp;
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;State: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextLine();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for a zip code entered in by the user
+&nbsp;     * and returns an integer
+&nbsp;     * @return an integer which represents a person&#39;s zip code
+&nbsp;     */
+&nbsp;    public static int prompt_Zip(){
+&nbsp;
+&nbsp;        // return &quot;Zip:&quot;;
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Zip: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextInt();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for a telephone number entered in by the user
+&nbsp;     * and returns a string
+&nbsp;     * @return a String which represents a person&#39;s telephone number
+&nbsp;     */
+&nbsp;    public static String prompt_Telephone(){
+&nbsp;
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Telephone: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextLine();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which prompts the user for an email address entered in by the user
+&nbsp;     * and returns a string
+&nbsp;     * @return a String which represents a person&#39;s email address
+&nbsp;     */
+&nbsp;    public static String prompt_Email(){
+&nbsp;
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Email: &quot;);</b>
+<b class="fc">&nbsp;        return keyboard.nextLine();</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Prints out a menu which prompts a user a selection of options
+&nbsp;     * to manipulate the AddressBook class
+&nbsp;     */
+&nbsp;    public static void displayMenu(){
+<b class="fc">&nbsp;        System.out.print(&quot;&quot;&quot;</b>
+&nbsp;                *************************
+&nbsp;                Please enter your menu selection
+&nbsp;                a) Loading From File
+&nbsp;                b) Addition
+&nbsp;                c) Removal
+&nbsp;                d) Find
+&nbsp;                e) Listing
+&nbsp;                f) Quit
+&nbsp;                *************************
+&nbsp;                &quot;&quot;&quot;);
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-02-21 15:27</div>
+</div>
+</body>
+</html>

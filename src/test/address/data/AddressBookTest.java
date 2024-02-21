@@ -1,3 +1,6 @@
+package address;
+// package address;
+
 import address.data.AddressBook;
 import address.data.AddressEntry;
 import org.junit.jupiter.api.Test;
@@ -6,23 +9,37 @@ import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class is used to test the AddressBook class to make sure it works properly.
+ * @author Jared Ferriols
+ * @since JDK 17
+ * @version 1.2
+ */
 public class AddressBookTest {
-//  For a particular test class you should test
-//  its corresponding class's methods at least 2
-//  times for each method (this is a minimum)
 
+    /**
+     * A preloaded object of AddressEntry to load into AddressBook
+     */
     private static AddressEntry makeEntryA() {
         return new AddressEntry("John", "Smith", "1234 Address St", "Union City", "CA", 94587, "best1@gmail.com", "111-234-5678");
     }
+    /**
+     * A preloaded object of AddressEntry to load into AddressBook
+     */
     private static AddressEntry makeEntryB() {
         return new AddressEntry("Adrian", "Lester", "4321 Address St", "Fremont", "CA", 94536, "best2@gmail.com", "999-876-5432");
     }
+    /**
+     * A preloaded object of AddressEntry to load into AddressBook
+     */
     private static AddressEntry makeEntryC() {
         return new AddressEntry("Mary", "Smith", "5678 Address St", "San Francisco", "CA", 94101, "best3@gmail.com", "510-555-1234");
     }
 
 
-
+    /**
+     * Test method for {@link AddressBook#list()}
+     */
     @org.junit.jupiter.api.Test
     public void testList() {
         AddressBook ab = new AddressBook();
@@ -36,12 +53,6 @@ public class AddressBookTest {
         expected1 += "1: John, Smith\n\t1234 Address St\n\tUnion City, CA 94587\n\t111-234-5678\n\tbest1@gmail.com\n";
 
 
-
-        /*
-        expected1 += "1: Adrian, Lester\n\t4321 Address St\n\tFremont, CA 94536\n\t999-876-5432\n\tbest2@gmail.com\n";
-        expected1 += "2: John, Smith\n\t1234 Address St\n\tUnion City, CA 94587\n\t111-234-5678\n\tbest1@gmail.com\n";
-        expected1 += "3: Mary, Smith\n\t5678 Address St\n\tSan Francisco, CA 94101\n\t510-555-1234\n\tbest3@gmail.com\n";
-         */
         PrintStream old1 = System.out;
         System.setOut(ps1);
 
@@ -65,6 +76,9 @@ public class AddressBookTest {
         assertEquals(expected2, output2.toString());
     }
 
+    /**
+     * Test method for {@link AddressBook#add(AddressEntry)}
+     */
     @org.junit.jupiter.api.Test
     public void testAdd() {
         AddressBook ab = new AddressBook();
@@ -107,6 +121,9 @@ public class AddressBookTest {
         assertEquals(expected2, output2.toString());
     }
 
+    /**
+     * Test method for {@link AddressBook#loadEntriesFromFile(java.lang.String)}
+     */
     @org.junit.jupiter.api.Test
     public void testLoadEntriesFromFile() {
         AddressBook ab = new AddressBook();
@@ -134,6 +151,9 @@ public class AddressBookTest {
 
     // https://stackoverflow.com/questions/8708342/redirect-console-output-to-string-in-java
     // https://www.programiz.com/java-programming/bytearrayoutputstream
+    /**
+     * Test method for {@link AddressBook#remove(java.lang.String)}
+     */
     @org.junit.jupiter.api.Test
     public void testRemove() {
         AddressBook ab = new AddressBook();
@@ -156,6 +176,9 @@ public class AddressBookTest {
 
     }
 
+    /**
+     * Test method for {@link AddressBook#find(java.lang.String)}
+     */
     @org.junit.jupiter.api.Test
     public void testFind() {
         AddressBook ab = new AddressBook();
@@ -221,4 +244,5 @@ public class AddressBookTest {
         // output1.reset();
 
     }
+
 }
