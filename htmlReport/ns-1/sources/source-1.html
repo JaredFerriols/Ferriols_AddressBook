@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > AddressBookApplication</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">address</a>
+</div>
+
+<h1>Coverage Summary for Class: AddressBookApplication (address)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AddressBookApplication</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package address;
+&nbsp;
+&nbsp;import address.data.AddressBook;
+&nbsp;import address.data.AddressEntry;
+&nbsp;// https://stackoverflow.com/questions/65421001/treemapstring-new-treemapstring-integer-treemap-with-object
+&nbsp;// import java.awt.*;
+&nbsp;import java.lang.*;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;/**
+&nbsp; * The AddressBookApplication class represents a generic Address Book Application used to invoke methods
+&nbsp; * of the other classes to the user.
+&nbsp; * @author Jared Ferriols
+&nbsp; * @since JDK 17
+&nbsp; * @version 1.2
+&nbsp; */
+<b class="nc">&nbsp;public class AddressBookApplication {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The main method which creates an AddressBook and
+&nbsp;     * prompts the user to manipulate the AddressBook class by
+&nbsp;     * allowing adding, deleting, listing, and searching for entries.
+&nbsp;     * @param args is the command line arguments passed to main
+&nbsp;     */
+&nbsp;    public static void main(String[] args) {
+&nbsp;
+&nbsp;
+<b class="nc">&nbsp;        AddressBook addB = new AddressBook();</b>
+<b class="nc">&nbsp;        startApplication(addB);</b>
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method initializes 2 AddressEntry objects with predefined data.
+&nbsp;     * Then it adds entries to AddressBook class passed to function and prints
+&nbsp;     * out the entries in a sorted manner in terms of the last name in alphabetical order.
+&nbsp;     * @param ab is an object of the AddressBook class that will hold the two address entries.
+&nbsp;     * @returns nothing as it is supposed to return nothing as a void function, but it
+&nbsp;     * actually prints out the sorted entries in console.
+&nbsp;     */
+&nbsp;      public static void initAddressBookExercise(AddressBook ab){
+&nbsp;
+&nbsp;        // create two address entries with predefined data
+<b class="nc">&nbsp;        AddressEntry addressEntry10 = new AddressEntry(&quot;Jared&quot;,&quot;Ferriols&quot;,&quot;12345 Whittington&quot;,&quot;Union City&quot;,&quot;CA&quot;,94587,&quot;510-244-8031&quot;,&quot;best1@gmail.com&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        AddressEntry addressEntry20 = new AddressEntry(&quot;John&quot;,&quot;Smith&quot;,&quot;45678 Whittington&quot;,&quot;Union City&quot;,&quot;CA&quot;,94586,&quot;510-555-1234&quot;,&quot;best2@gmail.com&quot;);</b>
+&nbsp;
+&nbsp;        // Add both address entries into address book and print out sorted list in terms of last name
+<b class="nc">&nbsp;        ab.add(addressEntry10);</b>
+<b class="nc">&nbsp;        ab.add(addressEntry20);</b>
+<b class="nc">&nbsp;        ab.list();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * This method allows the user to select their desired choices to manipulate
+&nbsp;     * the AddressBook instance based on the menu&#39;s display.
+&nbsp;     * @param ab is an object of the AddressBook class that will hold,
+&nbsp;     * manipulate, and display the address entries.
+&nbsp;     * @returns nothing as it is supposed to call the functions of the AddressBook
+&nbsp;     * and AddressEntry classes based on the user&#39;s input
+&nbsp;     */
+&nbsp;    public static void startApplication(AddressBook ab){
+<b class="nc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+&nbsp;        String choice;
+<b class="nc">&nbsp;        boolean continueProgram = true;</b>
+<b class="nc">&nbsp;        while(continueProgram) {</b>
+<b class="nc">&nbsp;            Menu.displayMenu();</b>
+<b class="nc">&nbsp;            choice = keyboard.nextLine();</b>
+<b class="nc">&nbsp;            switch (choice) {</b>
+&nbsp;                case &quot;a&quot; -&gt; {
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter in FileName:&quot;);</b>
+<b class="nc">&nbsp;                    ab.loadEntriesFromFile(keyboard.nextLine());</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                case &quot;b&quot; -&gt; {
+<b class="nc">&nbsp;                    ab.add(new AddressEntry(Menu.prompt_FirstName(), Menu.prompt_LastName(), Menu.prompt_Street(), Menu.prompt_City(), Menu.prompt_State(), Menu.prompt_Zip(), Menu.prompt_Telephone(), Menu.prompt_Email()));</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                case &quot;c&quot; -&gt; {
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter in Last Name of contact to remove:&quot;);</b>
+<b class="nc">&nbsp;                    ab.remove(keyboard.nextLine());</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                case &quot;d&quot; -&gt; {
+<b class="nc">&nbsp;                    System.out.println(&quot;Enter in all or beginning of last name you wish to find:&quot;);</b>
+<b class="nc">&nbsp;                    ab.find(keyboard.nextLine());</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                case &quot;e&quot; -&gt; {
+<b class="nc">&nbsp;                    ab.list();</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                case &quot;f&quot; -&gt; {
+<b class="nc">&nbsp;                    System.out.println(&quot;Quitting.&quot;);</b>
+<b class="nc">&nbsp;                    continueProgram = false;</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                default -&gt; {
+<b class="nc">&nbsp;                    System.out.println(&quot;Error: &quot; + choice + &quot; is not a valid input. Please try again.&quot;);</b>
+&nbsp;                }
+<b class="nc">&nbsp;            }</b>
+&nbsp;
+&nbsp;
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-02-21 15:27</div>
+</div>
+</body>
+</html>
