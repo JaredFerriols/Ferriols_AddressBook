@@ -1,0 +1,376 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > AddressEntry</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">address.data</a>
+</div>
+
+<h1>Coverage Summary for Class: AddressEntry (address.data)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AddressEntry</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95%
+  </span>
+  <span class="absValue">
+    (19/20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.4%
+  </span>
+  <span class="absValue">
+    (37/38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;package address.data;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;// https://stackoverflow.com/questions/8699195/cannot-be-cast-to-java-lang-comparable
+&nbsp;// https://stackoverflow.com/questions/3718383/why-should-a-java-class-implement-comparable
+&nbsp;
+&nbsp;/**
+&nbsp; * The AddressEntry class represents a generic Address Entry used to store all the information or data
+&nbsp; * for a user&#39;s address entry.
+&nbsp; * @author Jared Ferriols
+&nbsp; * @since JDK 17
+&nbsp; * @version 1.2
+&nbsp; */
+&nbsp;public class AddressEntry implements Comparable&lt;AddressEntry&gt;{
+&nbsp;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The first name of this contact.
+&nbsp;     */
+&nbsp;    private String firstName;
+&nbsp;    /**
+&nbsp;     * The last name of this contact.
+&nbsp;     */
+&nbsp;    private String lastName;
+&nbsp;    /**
+&nbsp;     * The street name of the contact.
+&nbsp;     */
+&nbsp;    private String street;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The city of the contact.
+&nbsp;     */
+&nbsp;    private String city;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The state of the contact.
+&nbsp;     */
+&nbsp;    private String state;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The zip of the contact.
+&nbsp;     */
+&nbsp;    private Integer zip;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The phone number of the contact.
+&nbsp;     */
+&nbsp;    private String phone;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The email address of this contact
+&nbsp;     */
+&nbsp;    private String email;
+&nbsp;
+&nbsp;    /** The empty AddressEntry constructor
+&nbsp;     * This initializes the values in terms of empty strings and empty values (not null)
+&nbsp;     */
+&nbsp;    public AddressEntry(){
+<b class="nc">&nbsp;        this(&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,0,&quot;&quot;,&quot;&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /** The AddressEntry constructor
+&nbsp;     * This initializes the values with the data provided in the parameters.
+&nbsp;     * @param firstName is a firstname
+&nbsp;     * @param lastName is a lastname
+&nbsp;     * @param street is a street
+&nbsp;     * @param city is a city
+&nbsp;     * @param state is a state
+&nbsp;     * @param zip is a zip code
+&nbsp;     * @param phone is a phone number
+&nbsp;     * @param email is an email
+&nbsp;     * @returns nothing
+&nbsp;     */
+<b class="fc">&nbsp;    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, String phone, String email) {</b>
+<b class="fc">&nbsp;        this.firstName = firstName;</b>
+<b class="fc">&nbsp;        this.lastName = lastName;</b>
+<b class="fc">&nbsp;        this.street = street;</b>
+<b class="fc">&nbsp;        this.city = city;</b>
+<b class="fc">&nbsp;        this.state = state;</b>
+<b class="fc">&nbsp;        this.zip = zip;</b>
+<b class="fc">&nbsp;        this.phone = phone;</b>
+<b class="fc">&nbsp;        this.email = email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    /** Takes data elements and composes a nicely formatted string from its values and returns this string
+&nbsp;     * @param nothing
+&nbsp;     * @return a formatted string of the data
+&nbsp;     */
+&nbsp;    // @Override
+&nbsp;    public String toString(){
+<b class="fc">&nbsp;        return firstName + &quot;, &quot; + lastName + &#39;\n&#39;</b>
+&nbsp;                + &#39;\t&#39; + street + &#39;\n&#39; + &#39;\t&#39;
+&nbsp;                + city + &quot;, &quot; + state + &quot; &quot; + zip
+&nbsp;                + &#39;\n&#39; + &#39;\t&#39; + email + &#39;\n&#39;
+&nbsp;                + &#39;\t&#39; + phone;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Used to properly add elements in the TreeMap for the add module in AddressBook
+&nbsp;     * as it needs to &quot;return&quot; a boolean value in TreeSet&lt;AddressEntry&gt;add(). This is
+&nbsp;     * because the original compareTo() is used for single data types while TrTreeSet&lt;AddressEntry&gt;add()
+&nbsp;     * holds multiple data in a single object.
+&nbsp;     * @param AddressEntry is an AddressEntry object
+&nbsp;     * @return a boolean value of 0 and 1, it compares the data of the address entry from last name
+&nbsp;     * to zip code.
+&nbsp;     */
+&nbsp;    public int compareTo(AddressEntry other) {
+<b class="fc">&nbsp;        if(this.lastName.compareTo(other.lastName) != 0) {</b>
+<b class="fc">&nbsp;            return this.lastName.compareTo(other.lastName);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        else if(this.firstName.compareTo(other.firstName) == 0 &amp;&amp;</b>
+<b class="fc">&nbsp;                this.city.compareTo(other.city) == 0 &amp;&amp;</b>
+<b class="fc">&nbsp;                this.phone.compareTo(other.phone) == 0 &amp;&amp;</b>
+<b class="fc">&nbsp;                this.state.compareTo(other.state) == 0 &amp;&amp;</b>
+<b class="fc">&nbsp;                this.street.compareTo(other.street) == 0 &amp;&amp;</b>
+<b class="fc">&nbsp;                this.email.compareTo(other.email) == 0 &amp;&amp;</b>
+<b class="fc">&nbsp;                this.zip.compareTo(other.zip) == 0) {</b>
+<b class="fc">&nbsp;            return 0;</b>
+&nbsp;        }
+&nbsp;        else
+<b class="fc">&nbsp;            return 1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to set the first name of the address entry
+&nbsp;     * @param firstName is a first name
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setFirstName(String firstName) {
+<b class="fc">&nbsp;        this.firstName = firstName;</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Method used to set the last name of the address entry
+&nbsp;     * @param lastName is a last name
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setLastName(String lastName) {
+<b class="fc">&nbsp;        this.lastName = lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to set the street of the address entry
+&nbsp;     * @param street is a street
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setStreet(String street) {
+<b class="fc">&nbsp;        this.street = street;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to set the city of the address entry
+&nbsp;     * @param city is a city
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setCity(String city) {
+<b class="fc">&nbsp;        this.city = city;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to set the zip code of the address entry
+&nbsp;     * @param zip is a zip code
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setZip(int zip) {
+<b class="fc">&nbsp;        this.zip= zip;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to set the phone number of the address entry
+&nbsp;     * @param phone is a phone number
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setPhone(String phone) {
+<b class="fc">&nbsp;        this.phone= phone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to set the email of the address entry
+&nbsp;     * @param email is an email address
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setEmail(String email) {
+<b class="fc">&nbsp;        this.email= email;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to set the state of the address entry
+&nbsp;     * @param state is a state
+&nbsp;     * @returns nothing
+&nbsp;     */
+&nbsp;    public void setState(String state) {
+<b class="fc">&nbsp;        this.state = state;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to get the first name of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the first name of a person
+&nbsp;     */
+&nbsp;    public String getFirstName() {
+<b class="fc">&nbsp;        return firstName;</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Method used to get the first name of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the last name of a person
+&nbsp;     */
+&nbsp;    public String getLastName() {
+<b class="fc">&nbsp;        return lastName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to get the street of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the street name where the person lives at
+&nbsp;     */
+&nbsp;    public String getStreet() {
+<b class="fc">&nbsp;        return street;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to get the city of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the city name or the large town where the person lives at
+&nbsp;     */
+&nbsp;    public String getCity() {
+<b class="fc">&nbsp;        return city;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to get the state of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the state name or the small nation where the person lives at
+&nbsp;     */
+&nbsp;    public String getState() {
+<b class="fc">&nbsp;        return state;</b>
+&nbsp;    }
+&nbsp;    /**
+&nbsp;     * Method used to get the zip of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the zip area code of a person
+&nbsp;     */
+&nbsp;    public int getZip() {
+<b class="fc">&nbsp;        return zip;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to get the phone number of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the phone number of the person to directly call
+&nbsp;     */
+&nbsp;    public String getPhone() {
+<b class="fc">&nbsp;        return phone;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Method used to get the email of the address entry as a string
+&nbsp;     * @param nothing
+&nbsp;     * @returns a String which represents the email of the person to message information electronically
+&nbsp;     */
+&nbsp;    public String getEmail() {
+<b class="fc">&nbsp;        return email;</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-02-21 15:27</div>
+</div>
+</body>
+</html>

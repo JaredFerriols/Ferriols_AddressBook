@@ -1,0 +1,364 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > AddressBook</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">address.data</a>
+</div>
+
+<h1>Coverage Summary for Class: AddressBook (address.data)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AddressBook</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    69.5%
+  </span>
+  <span class="absValue">
+    (57/82)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;
+&nbsp;package address.data;
+&nbsp;
+&nbsp;
+&nbsp;import java.awt.*;
+&nbsp;import java.util.*;
+&nbsp;import java.lang.*;
+&nbsp;import java.io.*;
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; * The AddressBook class represents a generic Address Book used to store multiple Address entries
+&nbsp; * for the user to add, remove, or look up.
+&nbsp; * @author Jared Ferriols
+&nbsp; * @since JDK 17
+&nbsp; * @version 1.2
+&nbsp; */
+&nbsp;// https://stackoverflow.com/questions/58113842/java-collections-use-treeset-as-value-for-treemap
+&nbsp;// https://www.geeksforgeeks.org/treemap-values-method-in-java-with-examples/
+&nbsp;// https://www.geeksforgeeks.org/treeset-in-java-with-examples/
+&nbsp;// https://stackoverflow.com/questions/10937667/incompatible-types-sortedset-and-treeset
+&nbsp;// https://www.geeksforgeeks.org/how-to-fix-java-lang-classcastexception-in-treeset/
+<b class="fc">&nbsp;public class AddressBook {</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The specific data structures used to store the data or address entries in address book.
+&nbsp;     * It uses TreeMap where the key is a String(the last name of the AddressEntry and the value is the a TreeSet
+&nbsp;     * AddressEntry. This is because java does not contain a multiset in standard libraries.
+&nbsp;     * Tree is used instead of hash because tree preserves the natural ordering of key which makes printing in
+&nbsp;     * sorted order by last name(key) easy.
+&nbsp;     */
+<b class="fc">&nbsp;    private final TreeMap&lt;String, TreeSet&lt;AddressEntry&gt;&gt; addressEntryList = new TreeMap&lt;&gt;();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * The method which prints out all the data of each of the entries within the address book.
+&nbsp;     * The AddressBook&#39;s list() method cycles through the collection of AddressEntry
+&nbsp;     * objects using an iterator the contained in AddressBook and prints outs the
+&nbsp;     * information to the console window calling toString() methods on
+&nbsp;     * each of its AddressEntry objects.
+&nbsp;     *
+&nbsp;     * @param nothing
+&nbsp;     * @returns nothing, It is a void function, but it prints all the address entries
+&nbsp;     * in the address book
+&nbsp;     */
+&nbsp;
+&nbsp;    public void list() {
+&nbsp;        // addressEntryList.values().forEach();
+&nbsp;        // https://www.javacodeexamples.com/java-stringbuilder-tutorial-with-examples/1622
+&nbsp;        // System.out.print(addressEntryList.entrySet());
+&nbsp;        // https://stackoverflow.com/questions/1318980/how-to-iterate-over-a-treemap
+&nbsp;        // https://www.geeksforgeeks.org/how-to-iterate-over-a-treemap-in-java/
+&nbsp;        //https://stackoverflow.com/questions/43688506/how-to-format-the-output-of-a-treemap
+&nbsp;        // https://stackoverflow.com/questions/13131890/for-each-loop-for-nested-tree-map
+&nbsp;        // https://stackoverflow.com/questions/7278128/formatting-string-in-java-using-return-string-format
+&nbsp;        // https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
+&nbsp;
+<b class="fc">&nbsp;        StringBuilder contents = new StringBuilder();</b>
+<b class="fc">&nbsp;        int i = 1;</b>
+&nbsp;        // iterate TreeMap
+<b class="fc">&nbsp;        for (Map.Entry&lt;String, TreeSet&lt;AddressEntry&gt;&gt; setContents : addressEntryList.entrySet()) {</b>
+&nbsp;            // iterate TreeSet and get its value
+<b class="fc">&nbsp;            for (AddressEntry element : setContents.getValue()) {</b>
+<b class="fc">&nbsp;                if (element != null) {</b>
+<b class="fc">&nbsp;                    contents.append(String.format(&quot;%-3s&quot; + element + &quot;\n&quot;, i + &quot;:&quot;));</b>
+<b class="fc">&nbsp;                    i++;</b>
+&nbsp;                }
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;        // print out contents with toString conversion
+<b class="fc">&nbsp;        System.out.print(contents.toString());</b>
+&nbsp;
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which adds an address entry object to the address book
+&nbsp;     * @param entry is an object of AddressEntry to add to the AddressBook
+&nbsp;     * @returns nothing
+&nbsp;     *
+&nbsp;     * If the key is new, then a new TreeSet is created to contain the address entry
+&nbsp;     * If the key is not new, then it checks compareTo method to see if the address entry
+&nbsp;     * data is different in other data such as first name
+&nbsp;     **/
+&nbsp;    // https://www.baeldung.com/java-map-putifabsent-computeifabsent
+&nbsp;    // https://stackoverflow.com/questions/65421001/treemapstring-new-treemapstring-integer-treemap-with-object
+&nbsp;    public void add(AddressEntry entry) {
+&nbsp;
+&nbsp;        // java: incompatible types: boolean cannot be converted to java.util.TreeSet&lt;address.data.AddressEntry&gt;
+&nbsp;        // TreeSet&lt;AddressEntry&gt; aETSet = new TreeSet&lt;AddressEntry&gt;();
+&nbsp;        // addressEntryList.put(newEntry0.getLastName(), aETSet.add(newEntry0));
+&nbsp;
+&nbsp;        // java: incompatible types: address.data.AddressEntry cannot be converted to java.util.TreeSet&lt;address.data.AddressEntry&gt;
+&nbsp;        // addressEntryList.put(newEntry0.getLastName(), newEntry0);
+&nbsp;
+&nbsp;        // Need to override compareTo for this one...
+&nbsp;        // needs Boolean value? from add()
+&nbsp;
+&nbsp;        // Exception in thread &quot;main&quot; java.lang.ClassCastException:
+&nbsp;        // class address.data.AddressEntry cannot be cast to class
+&nbsp;        // java.lang.Comparable (address.data.AddressEntry is in unnamed
+&nbsp;        // module of loader &#39;app&#39;; java.lang.Comparable is in module
+&nbsp;        // java.base of loader &#39;bootstrap&#39;)
+&nbsp;
+&nbsp;        // Add in contacts in a TreeMap&lt;String, TreeSet&lt;AddressEntry&gt;&gt; by checking
+&nbsp;        // if the contents is already in the set
+<b class="fc">&nbsp;        addressEntryList.computeIfAbsent(entry.getLastName(), k -&gt; new TreeSet&lt;&gt;()).add(entry);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which reads the address entries from a text file and adds them to the address book
+&nbsp;     *
+&nbsp;     * @param fileName is a string which is the name of a text file that contains the address Entry data
+&nbsp;     *
+&nbsp;     * The format for the text file is firstName\nlastName\nstreet\ncity\nstate\nzip\nphone\nemail
+&nbsp;     */
+&nbsp;    public void loadEntriesFromFile(String fileName) {
+&nbsp;
+&nbsp;        // https://stackoverflow.com/questions/25596985/java-unreported-exception-java-io-filenotfoundexception-must-be-caught-or-decl
+&nbsp;        // https://stackoverflow.com/questions/32553871/java-wont-read-an-int-from-a-file
+&nbsp;        // https://www.digitalocean.com/community/tutorials/java-read-file-line-by-line
+&nbsp;        try{
+<b class="fc">&nbsp;            File file = new File(fileName);</b>
+<b class="fc">&nbsp;            FileReader fReader = new FileReader(file);</b>
+<b class="fc">&nbsp;            BufferedReader br = new BufferedReader(fReader);</b>
+&nbsp;            String fileLine;
+&nbsp;
+&nbsp;            // read strings except for zip, which is an int
+&nbsp;            // firstName + lastName + street +  city + state + zip + phone +  email;
+<b class="fc">&nbsp;            while((fileLine = br.readLine()) != null) {</b>
+<b class="fc">&nbsp;                this.add(new AddressEntry(fileLine, br.readLine(), br.readLine(), br.readLine(),</b>
+<b class="fc">&nbsp;                        br.readLine(), Integer.parseInt(br.readLine()), br.readLine(), br.readLine()));</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        catch(FileNotFoundException e) {</b>
+<b class="nc">&nbsp;            System.out.println(e.getMessage());</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch(IOException ex) {</b>
+<b class="nc">&nbsp;            ex.printStackTrace();</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    // https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html
+&nbsp;    // https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
+&nbsp;    // https://www.geeksforgeeks.org/arraylist-get-method-java-examples/?ref=lbp
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which removes an address entry from the address book
+&nbsp;     *
+&nbsp;     * @param lastName is the last name or the part of the last name of the
+&nbsp;     * person contained in the AddressEntry to be removed, as there could be multiple
+&nbsp;     * entires with the same first character of the last name
+&nbsp;     *
+&nbsp;     * First we find and store AddressEntry into a data structure.
+&nbsp;     * If there is only one AddressEntry instance, then print out AddressEntry and
+&nbsp;     * prompt user if they wish to delete. If there is more than 1 element,
+&nbsp;     * then print all elements and ask user to select element based on index.
+&nbsp;     */
+&nbsp;    public void remove(String lastName) {
+&nbsp;        // Find all entries based on part of the last name and store them in TreeSet
+&nbsp;        SortedMap&lt;String, TreeSet&lt;address.data.AddressEntry&gt;&gt; usableMap;
+<b class="fc">&nbsp;        usableMap = addressEntryList.subMap(lastName, lastName + Character.MAX_VALUE);</b>
+<b class="fc">&nbsp;        TreeSet&lt;AddressEntry&gt; selectedSet = new TreeSet&lt;&gt;();</b>
+<b class="fc">&nbsp;        for(Map.Entry&lt;String, TreeSet&lt;AddressEntry&gt;&gt; entry : usableMap.entrySet()) {</b>
+<b class="fc">&nbsp;            selectedSet.addAll(entry.getValue());</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        Scanner keyboard = new Scanner(System.in);</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            if (selectedSet.size() == 1) {</b>
+&nbsp;                // Use ArrayList to get the AddressEntry easily.
+<b class="fc">&nbsp;                ArrayList&lt;AddressEntry&gt; onlyList = new ArrayList&lt;&gt;();</b>
+<b class="fc">&nbsp;                for (AddressEntry entry : selectedSet) {</b>
+<b class="fc">&nbsp;                    onlyList.add(entry);</b>
+<b class="fc">&nbsp;                }</b>
+<b class="fc">&nbsp;                int oneIndex = 0;</b>
+<b class="fc">&nbsp;                System.out.println(&quot;The following entry was found in the address book.&quot;);</b>
+<b class="fc">&nbsp;                System.out.printf(&quot;%-3s&quot; + onlyList.get(oneIndex) + &quot;\n&quot;, &quot; &quot;);</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Hit &#39;y&#39; to remove the entry or &#39;n&#39; to return to main menu&quot;);</b>
+<b class="fc">&nbsp;                if (keyboard.nextLine().compareTo(&quot;y&quot;) == 0) {</b>
+<b class="fc">&nbsp;                    addressEntryList.get(onlyList.get(oneIndex).getLastName()).remove(onlyList.get(oneIndex));</b>
+&nbsp;                }
+<b class="fc">&nbsp;            } else if (selectedSet.size() &gt; 1) {</b>
+&nbsp;                    // Use ArrayList to get the specific AddressEntry object easily
+<b class="nc">&nbsp;                    ArrayList&lt;AddressEntry&gt; selectedList = new ArrayList&lt;&gt;();</b>
+<b class="nc">&nbsp;                    int i = 1;</b>
+<b class="nc">&nbsp;                    System.out.println(&quot;The following entries were found in the address book,&quot; +</b>
+&nbsp;                            &quot;select number of entry you wish to remove:\n&quot;);
+<b class="nc">&nbsp;                    for (AddressEntry entry : selectedSet) {</b>
+<b class="nc">&nbsp;                        selectedList.add(entry);</b>
+<b class="nc">&nbsp;                        System.out.printf(&quot;%-3s&quot; + entry + &quot;\n\n&quot;, i + &quot;:&quot;);</b>
+<b class="nc">&nbsp;                        i++;</b>
+<b class="nc">&nbsp;                    }</b>
+&nbsp;                    // Index is based on array, so choice 1 is actually 0 for ArrayList
+<b class="nc">&nbsp;                    int selectedIndex = keyboard.nextInt() - 1;</b>
+<b class="nc">&nbsp;                    keyboard.nextLine();</b>
+<b class="nc">&nbsp;                    if (selectedIndex &lt; selectedList.size() &amp;&amp; selectedIndex &gt;= 0) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Hit &#39;y&#39; to remove the following entry or &#39;n&#39; to return to main menu:\n&quot;);</b>
+&nbsp;                    }
+<b class="nc">&nbsp;                    System.out.printf(&quot;%-3s&quot; + selectedList.get(selectedIndex) + &quot;\n\n&quot;, &quot;  &quot;);</b>
+<b class="nc">&nbsp;                    if (keyboard.nextLine().compareTo(&quot;y&quot;) == 0) {</b>
+<b class="nc">&nbsp;                        addressEntryList.get(selectedList.get(selectedIndex).getLastName()).remove(selectedList.get(selectedIndex));</b>
+&nbsp;                    }
+&nbsp;
+<b class="nc">&nbsp;            } else {</b>
+<b class="nc">&nbsp;                System.out.println(&quot;No entries with last name &quot; + lastName + &quot; were found.&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+<b class="nc">&nbsp;        catch(InputMismatchException e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Error: You need to enter a valid integer. Please try again.&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch(IndexOutOfBoundsException e) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Error: Invalid element selection. Please try again.&quot;);</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * A method which finds the desired address entry based on the user&#39;s input
+&nbsp;     * and displays one or multiple address entries
+&nbsp;     * @param partLastName is a string which contains either a full last name or the first part
+&nbsp;     * of a last name in an AddressEntry
+&nbsp;     */
+&nbsp;    public void find(String partLastName) {
+&nbsp;
+&nbsp;        // https://www.geeksforgeeks.org/stream-in-java/
+&nbsp;        // https://howtodoinjava.com/java/collections/java-submap/
+&nbsp;        // https://stackoverflow.com/questions/24668887/extracting-a-specific-list-from-a-navigablemap-in-java
+&nbsp;        // java: incompatible types: java.util.SortedMap&lt;java.lang.String,java.util.TreeSet&lt;address.data.AddressEntry&gt;&gt; cannot be converted to java.util.NavigableMap&lt;java.lang.String,java.util.TreeSet&lt;address.data.AddressEntry&gt;&gt;
+&nbsp;        SortedMap&lt;String, TreeSet&lt;address.data.AddressEntry&gt;&gt; usableMap;
+<b class="fc">&nbsp;        usableMap = addressEntryList.subMap(partLastName, partLastName + Character.MAX_VALUE);</b>
+&nbsp;
+<b class="fc">&nbsp;        if(usableMap.size() &gt; 0) {</b>
+<b class="fc">&nbsp;            int i = 1;</b>
+<b class="fc">&nbsp;            int j = 0;</b>
+&nbsp;
+&nbsp;            // Get size of SortedMap, as .size() returns 1 instead of actual number of elements
+<b class="fc">&nbsp;            for(Map.Entry&lt;String, TreeSet&lt;address.data.AddressEntry&gt;&gt; entry : usableMap.entrySet()) {</b>
+<b class="fc">&nbsp;                for(address.data.AddressEntry item : entry.getValue()) {</b>
+<b class="fc">&nbsp;                    j++;</b>
+<b class="fc">&nbsp;                }</b>
+<b class="fc">&nbsp;            }</b>
+&nbsp;
+&nbsp;            // usableMap.values().stream().count()
+<b class="fc">&nbsp;            System.out.println(&quot;The following &quot; + j +</b>
+&nbsp;                    &quot; entries were found in the address book&quot; +
+&nbsp;                    &quot; for a last name starting with &quot; + &quot;\&quot;&quot; + partLastName + &quot;\&quot;&quot;);
+<b class="fc">&nbsp;            for(Map.Entry&lt;String, TreeSet&lt;address.data.AddressEntry&gt;&gt; entry : usableMap.entrySet()) {</b>
+<b class="fc">&nbsp;                for(address.data.AddressEntry item : entry.getValue()) {</b>
+<b class="fc">&nbsp;                    System.out.printf(&quot;%-3s&quot; + item + &quot;\n\n&quot;, i + &quot;:&quot;);</b>
+<b class="fc">&nbsp;                    i++;</b>
+<b class="fc">&nbsp;                }</b>
+<b class="fc">&nbsp;            }</b>
+<b class="fc">&nbsp;        }</b>
+&nbsp;        else
+<b class="fc">&nbsp;            System.out.println(&quot;There were no entries were found in the address book&quot; +</b>
+&nbsp;                    &quot; for a last name starting with &quot; + &quot;\&quot;&quot; + partLastName + &quot;\&quot;&quot;);
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-02-21 15:27</div>
+</div>
+</body>
+</html>
