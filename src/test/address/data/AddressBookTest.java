@@ -89,14 +89,7 @@ public class AddressBookTest {
         ab.add(makeEntryC());
         String expected1 = "";
         expected1 += "1: Mary, Smith\n\t5678 Address St\n\tSan Francisco, CA 94101\n\t510-555-1234\n\tbest3@gmail.com\n";
-
-
-
-        /*
-        expected1 += "1: Adrian, Lester\n\t4321 Address St\n\tFremont, CA 94536\n\t999-876-5432\n\tbest2@gmail.com\n";
-        expected1 += "2: John, Smith\n\t1234 Address St\n\tUnion City, CA 94587\n\t111-234-5678\n\tbest1@gmail.com\n";
-        expected1 += "3: Mary, Smith\n\t5678 Address St\n\tSan Francisco, CA 94101\n\t510-555-1234\n\tbest3@gmail.com\n";
-         */
+        
         PrintStream old1 = System.out;
         System.setOut(ps1);
 
@@ -148,8 +141,6 @@ public class AddressBookTest {
 
     }
 
-    // https://stackoverflow.com/questions/8708342/redirect-console-output-to-string-in-java
-    // https://www.programiz.com/java-programming/bytearrayoutputstream
     /**
      * Test method for {@link AddressBook#remove(java.lang.String)}
      */
@@ -200,7 +191,6 @@ public class AddressBookTest {
                 " for a last name starting with \"\"\r\n" + "1: " + makeEntryB().toString() + "\n\n"
                 + "2: " + makeEntryA().toString() + "\n\n" + "3: " + makeEntryC().toString() + "\n\n";
 
-        // output1.reset();
         String result2 = "There were no entries were found in the address book" +
                 " for a last name starting with " + "\"" + input2 + "\"\r\n";
         String result3 = "The following 1 entries were found in the address book" +
@@ -216,7 +206,6 @@ public class AddressBookTest {
         assertEquals(result1, output1.toString());
         System.out.flush();
         System.setOut(old1);
-        // output1.reset();
 
         PrintStream old2 = System.out;
         System.setOut(ps2);
@@ -224,7 +213,6 @@ public class AddressBookTest {
         assertEquals(result2, output2.toString());
         System.out.flush();
         System.setOut(old2);
-        // output1.reset();
 
         PrintStream old3 = System.out;
         System.setOut(ps3);
@@ -232,7 +220,6 @@ public class AddressBookTest {
         assertEquals(result3, output3.toString());
         System.out.flush();
         System.setOut(old3);
-        // output1.reset();
 
         PrintStream old4 = System.out;
         System.setOut(ps4);
@@ -240,7 +227,6 @@ public class AddressBookTest {
         assertEquals(result4, output4.toString());
         System.out.flush();
         System.setOut(old4);
-        // output1.reset();
 
     }
 

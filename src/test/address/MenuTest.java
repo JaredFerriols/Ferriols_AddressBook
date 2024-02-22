@@ -19,9 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MenuTest {
 
-
-    // https://stackoverflow.com/questions/6415728/junit-testing-with-simulated-user-input
-    // https://stackoverflow.com/questions/3894798/hide-java-output
     /**
      * Test method for {@link Menu#prompt_FirstName()}
      */
@@ -126,7 +123,6 @@ public class MenuTest {
         System.setIn(sysInBackup);
     }
 
-    // https://stackoverflow.com/questions/246038/unit-testing-void-methods
     /**
      * Test method for {@link Menu#displayMenu()}
      */
