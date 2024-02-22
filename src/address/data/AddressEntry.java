@@ -10,8 +10,8 @@ package address.data;
  * The AddressEntry class represents a generic Address Entry used to store all the information or data
  * for a user's address entry.
  * @author Jared Ferriols
- * @since Jan. 25, 2023
- * @version 1.0
+ * @since JDK 17
+ * @version 1.2
  */
 public class AddressEntry implements Comparable<AddressEntry>{
 
@@ -100,8 +100,10 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
      * Used to properly add elements in the TreeMap for the add module in AddressBook
-     * as it needs to "return" a boolean value in TreeSet<AddressEntry>add().
-     * @param AddressEntry an AddressEntry object
+     * as it needs to "return" a boolean value in TreeSet<AddressEntry>add(). This is
+     * because the original compareTo() is used for single data types while TrTreeSet<AddressEntry>add()
+     * holds multiple data in a single object.
+     * @param AddressEntry is an AddressEntry object
      * @return a boolean value of 0 and 1, it compares the data of the address entry from last name
      * to zip code.
      */
