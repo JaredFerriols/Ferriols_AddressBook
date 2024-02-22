@@ -1,7 +1,5 @@
-package address;
+package address.data;
 
-import address.data.AddressBook;
-import address.data.AddressEntry;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 
@@ -89,7 +87,7 @@ public class AddressBookTest {
         ab.add(makeEntryC());
         String expected1 = "";
         expected1 += "1: Mary, Smith\n\t5678 Address St\n\tSan Francisco, CA 94101\n\t510-555-1234\n\tbest3@gmail.com\n";
-        
+
         PrintStream old1 = System.out;
         System.setOut(ps1);
 
