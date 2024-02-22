@@ -1,8 +1,5 @@
-package address.data;
+package address;
 
-import address.data.AddressBook;
-import address.data.AddressEntry;
-import address.Menu;
 import org.junit.jupiter.api.Test;
 
 

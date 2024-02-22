@@ -60,13 +60,13 @@ public class AddressBook {
     }
 
     /**
-     * A method which adds an address entry object to the address book
+     * A method which adds an address entry object to the address book.
      * @param entry is an object of AddressEntry to add to the AddressBook
      * @returns nothing
      *
      * If the key is new, then a new TreeSet is created to contain the address entry
      * If the key is not new, then it checks compareTo method to see if the address entry
-     * data is different in other data such as first name
+     * data is different in other data such as first name.
      **/
 
     public void add(AddressEntry entry) {
@@ -74,9 +74,9 @@ public class AddressBook {
     }
 
     /**
-     * A method which reads the address entries from a text file and adds them to the address book
+     * A method which reads the address entries from a text file and adds them to the address book.
      *
-     * @param fileName is a string which is the name of a text file that contains the address Entry data
+     * @param fileName is a string which is the name of a text file that contains the address Entry data.
      *
      * The format for the text file is firstName\nlastName\nstreet\ncity\nstate\nzip\nphone\nemail
      */
@@ -104,7 +104,7 @@ public class AddressBook {
     }
 
     /**
-     * A method which removes an address entry from the address book
+     * A method which removes an address entry from the address book.
      *
      * @param lastName is the last name or the part of the last name of the
      * person contained in the AddressEntry to be removed, as there could be multiple

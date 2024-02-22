@@ -1,11 +1,6 @@
 
 package address.data;
 
-
-
-// https://stackoverflow.com/questions/8699195/cannot-be-cast-to-java-lang-comparable
-// https://stackoverflow.com/questions/3718383/why-should-a-java-class-implement-comparable
-
 /**
  * The AddressEntry class represents a generic Address Entry used to store all the information or data
  * for a user's address entry.
@@ -54,14 +49,16 @@ public class AddressEntry implements Comparable<AddressEntry>{
      */
     private String email;
 
-    /** The empty AddressEntry constructor
-     * This initializes the values in terms of empty strings and empty values (not null)
+    /**
+     * The empty AddressEntry constructor.
+     * This initializes the values in terms of empty strings and empty values (not null).
      */
     public AddressEntry(){
         this("","","","","",0,"","");
     }
 
-    /** The AddressEntry constructor
+    /**
+     * The AddressEntry constructor.
      * This initializes the values with the data provided in the parameters.
      * @param firstName is a firstname
      * @param lastName is a lastname
