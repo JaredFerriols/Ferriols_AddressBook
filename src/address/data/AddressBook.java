@@ -12,8 +12,8 @@ import java.io.*;
  * The AddressBook class represents a generic Address Book used to store multiple Address entries
  * for the user to add, remove, or look up.
  * @author Jared Ferriols
- * @since Jan. 25, 2023
- * @version 1.0
+ * @since JDK 17
+ * @version 1.2
  */
 // https://stackoverflow.com/questions/58113842/java-collections-use-treeset-as-value-for-treemap
 // https://www.geeksforgeeks.org/treemap-values-method-in-java-with-examples/
@@ -168,6 +168,7 @@ public class AddressBook {
 
         try {
             if (selectedSet.size() == 1) {
+                // Use ArrayList to get the AddressEntry easily.
                 ArrayList<AddressEntry> onlyList = new ArrayList<>();
                 for (AddressEntry entry : selectedSet) {
                     onlyList.add(entry);
@@ -180,6 +181,7 @@ public class AddressBook {
                     addressEntryList.get(onlyList.get(oneIndex).getLastName()).remove(onlyList.get(oneIndex));
                 }
             } else if (selectedSet.size() > 1) {
+                    // Use ArrayList to get the specific AddressEntry object easily
                     ArrayList<AddressEntry> selectedList = new ArrayList<>();
                     int i = 1;
                     System.out.println("The following entries were found in the address book," +
