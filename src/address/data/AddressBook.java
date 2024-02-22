@@ -15,11 +15,7 @@ import java.io.*;
  * @since JDK 17
  * @version 1.2
  */
-// https://stackoverflow.com/questions/58113842/java-collections-use-treeset-as-value-for-treemap
-// https://www.geeksforgeeks.org/treemap-values-method-in-java-with-examples/
-// https://www.geeksforgeeks.org/treeset-in-java-with-examples/
-// https://stackoverflow.com/questions/10937667/incompatible-types-sortedset-and-treeset
-// https://www.geeksforgeeks.org/how-to-fix-java-lang-classcastexception-in-treeset/
+
 public class AddressBook {
 
     /**
@@ -44,15 +40,6 @@ public class AddressBook {
      */
 
     public void list() {
-        // addressEntryList.values().forEach();
-        // https://www.javacodeexamples.com/java-stringbuilder-tutorial-with-examples/1622
-        // System.out.print(addressEntryList.entrySet());
-        // https://stackoverflow.com/questions/1318980/how-to-iterate-over-a-treemap
-        // https://www.geeksforgeeks.org/how-to-iterate-over-a-treemap-in-java/
-        //https://stackoverflow.com/questions/43688506/how-to-format-the-output-of-a-treemap
-        // https://stackoverflow.com/questions/13131890/for-each-loop-for-nested-tree-map
-        // https://stackoverflow.com/questions/7278128/formatting-string-in-java-using-return-string-format
-        // https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
 
         StringBuilder contents = new StringBuilder();
         int i = 1;
@@ -81,28 +68,8 @@ public class AddressBook {
      * If the key is not new, then it checks compareTo method to see if the address entry
      * data is different in other data such as first name
      **/
-    // https://www.baeldung.com/java-map-putifabsent-computeifabsent
-    // https://stackoverflow.com/questions/65421001/treemapstring-new-treemapstring-integer-treemap-with-object
+
     public void add(AddressEntry entry) {
-
-        // java: incompatible types: boolean cannot be converted to java.util.TreeSet<address.data.AddressEntry>
-        // TreeSet<AddressEntry> aETSet = new TreeSet<AddressEntry>();
-        // addressEntryList.put(newEntry0.getLastName(), aETSet.add(newEntry0));
-
-        // java: incompatible types: address.data.AddressEntry cannot be converted to java.util.TreeSet<address.data.AddressEntry>
-        // addressEntryList.put(newEntry0.getLastName(), newEntry0);
-
-        // Need to override compareTo for this one...
-        // needs Boolean value? from add()
-
-        // Exception in thread "main" java.lang.ClassCastException:
-        // class address.data.AddressEntry cannot be cast to class
-        // java.lang.Comparable (address.data.AddressEntry is in unnamed
-        // module of loader 'app'; java.lang.Comparable is in module
-        // java.base of loader 'bootstrap')
-
-        // Add in contacts in a TreeMap<String, TreeSet<AddressEntry>> by checking
-        // if the contents is already in the set
         addressEntryList.computeIfAbsent(entry.getLastName(), k -> new TreeSet<>()).add(entry);
     }
 
@@ -115,9 +82,6 @@ public class AddressBook {
      */
     public void loadEntriesFromFile(String fileName) {
 
-        // https://stackoverflow.com/questions/25596985/java-unreported-exception-java-io-filenotfoundexception-must-be-caught-or-decl
-        // https://stackoverflow.com/questions/32553871/java-wont-read-an-int-from-a-file
-        // https://www.digitalocean.com/community/tutorials/java-read-file-line-by-line
         try{
             File file = new File(fileName);
             FileReader fReader = new FileReader(file);
@@ -138,11 +102,6 @@ public class AddressBook {
             ex.printStackTrace();
         }
     }
-
-
-    // https://docs.oracle.com/javase/8/docs/api/java/util/TreeSet.html
-    // https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
-    // https://www.geeksforgeeks.org/arraylist-get-method-java-examples/?ref=lbp
 
     /**
      * A method which removes an address entry from the address book
@@ -223,10 +182,6 @@ public class AddressBook {
      */
     public void find(String partLastName) {
 
-        // https://www.geeksforgeeks.org/stream-in-java/
-        // https://howtodoinjava.com/java/collections/java-submap/
-        // https://stackoverflow.com/questions/24668887/extracting-a-specific-list-from-a-navigablemap-in-java
-        // java: incompatible types: java.util.SortedMap<java.lang.String,java.util.TreeSet<address.data.AddressEntry>> cannot be converted to java.util.NavigableMap<java.lang.String,java.util.TreeSet<address.data.AddressEntry>>
         SortedMap<String, TreeSet<address.data.AddressEntry>> usableMap;
         usableMap = addressEntryList.subMap(partLastName, partLastName + Character.MAX_VALUE);
 
@@ -241,7 +196,6 @@ public class AddressBook {
                 }
             }
 
-            // usableMap.values().stream().count()
             System.out.println("The following " + j +
                     " entries were found in the address book" +
                     " for a last name starting with " + "\"" + partLastName + "\"");
