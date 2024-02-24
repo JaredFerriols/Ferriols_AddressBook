@@ -1,4 +1,3 @@
-
 package address.data;
 
 /**
@@ -86,7 +85,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
      * @param nothing
      * @return a formatted string of the data
      */
-    // @Override
+    @Override
     public String toString(){
         return firstName + ", " + lastName + '\n'
                 + '\t' + street + '\n' + '\t'
@@ -104,6 +103,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
      * @return a boolean value of 0 and 1, it compares the data of the address entry from last name
      * to zip code.
      */
+    @Override
     public int compareTo(AddressEntry other) {
         if(this.lastName.compareTo(other.lastName) != 0) {
             return this.lastName.compareTo(other.lastName);
@@ -116,9 +116,9 @@ public class AddressEntry implements Comparable<AddressEntry>{
                 this.email.compareTo(other.email) == 0 &&
                 this.zip.compareTo(other.zip) == 0) {
             return 0;
-        }
-        else
+        } else {
             return 1;
+        }
     }
 
     /**
