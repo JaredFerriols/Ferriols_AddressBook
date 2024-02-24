@@ -2,8 +2,7 @@ package address;
 
 import address.data.AddressBook;
 import address.data.AddressEntry;
-// https://stackoverflow.com/questions/65421001/treemapstring-new-treemapstring-integer-treemap-with-object
-// import java.awt.*;
+import java.awt.*;
 import java.lang.*;
 import java.util.*;
 
@@ -23,12 +22,8 @@ public class AddressBookApplication {
      * @param args is the command line arguments passed to main
      */
     public static void main(String[] args) {
-
-
         AddressBook addB = new AddressBook();
         startApplication(addB);
-
-
     }
 
     /**
@@ -95,7 +90,6 @@ public class AddressBookApplication {
                     System.out.println("Error: " + choice + " is not a valid input. Please try again.");
                 }
             }
-
 
         }
     }

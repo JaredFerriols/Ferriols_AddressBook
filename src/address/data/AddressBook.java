@@ -1,6 +1,4 @@
-
 package address.data;
-
 
 import java.awt.*;
 import java.util.*;
@@ -55,8 +53,7 @@ public class AddressBook {
         }
         // print out contents with toString conversion
         System.out.print(contents.toString());
-
-
+        
     }
 
     /**
