@@ -1,6 +1,4 @@
-
 package address.data;
-
 
 import java.awt.*;
 import java.util.*;
